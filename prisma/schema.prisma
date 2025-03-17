@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model MasterUserType {
+  id         Int      @id @default(autoincrement())
+  name       String
+  is_deleted Boolean  @default(false)
+  created_at DateTime @default(now())
+  created_by String
+  updated_at DateTime @updatedAt
+  updated_by String
+}
+
+model master_prefix {
+  id         Int      @id @default(autoincrement())
+  name       String
+  is_deleted Boolean  @default(false)
+  created_at DateTime @default(now())
+  created_by String
+  updated_at DateTime @updatedAt
+  updated_by String
+}
+
+model MasterISCEDLevel {
+  level_id    Int      @id @default(autoincrement())
+  level_type  String   @unique // e.g., 'ISCED1','ISCED2','ISCED3'
+  level_name  String
+  is_deleted  Boolean  @default(false)
+  created_at  DateTime @default(now())
+  created_by  String
+  updated_at  DateTime @updatedAt
+  updated_by  String
+}
+
+model master_plants {
+  id    Int      @id @default(autoincrement())
+  namewe  String   
+  is_deleted  Boolean  @default(false)
+  created_at  DateTime @default(now())
+  created_by  String
+  updated_at  DateTime @updatedAt
+  updated_by  String
+}
+
+model master_plants2 {
+  id    Int      @id @default(autoincrement())
+  namewe  String   
+  is_deleted  Boolean  @default(false)
+  created_at  DateTime @default(now())
+  created_by  String
+  updated_at  DateTime @updatedAt
+  updated_by  String
+}
+
+
+
+model User {
+  id    String @id @default(uuid())
+  name  String
+  email String @unique
+}
